@@ -79,10 +79,6 @@ const LegendItem: React.FC<LegendItemProps> = ({label}) => (
 const styles = StyleSheet.create({
   container: {
     borderRadius: 20,
-    shadowColor: '#000',
-    shadowOpacity: 0.1,
-    shadowRadius: 10,
-    elevation: 5,
     paddingVertical: 20,
   },
   legendContainer: {

@@ -8,7 +8,7 @@ export const client = () => {
   // console.log('Config.API_KEY:', Config.API_KEY);
 
   let client = axios.create({
-    baseURL: Config.BASE_URL,
+    baseURL: Config?.BASE_URL?? "https://api.themoviedb.org/",
     headers: {
       'Content-type': 'application/json',
     },

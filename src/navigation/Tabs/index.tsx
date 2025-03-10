@@ -1,5 +1,5 @@
 import React, {useCallback} from 'react';
-import {StyleSheet, View, ViewStyle} from 'react-native';
+import {Platform, StyleSheet, ViewStyle} from 'react-native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {getFocusedRouteNameFromRoute} from '@react-navigation/native';
 import DashboardTab from './DashboardTab';
@@ -18,8 +18,6 @@ import {
 } from '@assets/svg';
 import {SvgXml} from 'react-native-svg';
 import {Colors} from '@constants/Colors';
-import {Text} from '@components/index';
-import {width} from '@utils/resizeUtils';
 
 const Tab = createBottomTabNavigator();
 
@@ -51,6 +49,9 @@ const BottomTabs = () => {
       screenOptions={({route}) => ({
         headerShown: false,
         tabBarStyle: getTabBarStyle(route),
+        tabBarActiveTintColor: Colors.textWhite,
+        tabBarInactiveTintColor: Colors.textDark,
+        headerBackgroundContainerStyle: {backgroundColor: Colors.primary},
       })}>
       {[
         {name: 'Dashboard', component: DashboardTab},
@@ -64,17 +65,7 @@ const BottomTabs = () => {
           component={component}
           options={{
             tabBarIcon: ({focused}) => (
-              <View style={styles.iconContainer}>
-                <SvgXml
-                  xml={getTabIcon(name, focused)}
-                  width={18}
-                  height={18}
-                />
-                <Text
-                  style={[styles.tabBarLabel, focused && styles.activeLabel]}>
-                  {name}
-                </Text>
-              </View>
+              <SvgXml xml={getTabIcon(name, focused)} width={18} height={18} />
             ),
           }}
         />
@@ -92,27 +83,25 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
     width: '100%',
     bottom: 0,
+    borderColor: Colors.primary,
     backgroundColor: Colors.primary,
     borderTopRightRadius: 27,
     borderTopLeftRadius: 27,
-    height: 75,
-    alignItems: 'center',
+    height: Platform.OS == 'ios' ? 70 : 60,
   },
   hiddenTabBar: {
     position: 'absolute',
     height: 0,
     opacity: 0,
   },
-  iconContainer: {
-    width: width / 4,
-    alignItems: 'center',
-  },
   tabBarLabel: {
-    fontSize: 8,
+    fontSize: 10,
     marginTop: 4,
     color: Colors.secondary,
+    textAlign: 'center',
   },
   activeLabel: {
     color: Colors.white,
+    fontWeight: '600',
   },
 });

@@ -25,7 +25,7 @@ const TicketBuying: React.FC<ScreenProps> = ({navigation}) => {
         <Curved />
         <SeatingChart style={styles.seatingChartStyle} />
       </View>
-      <View style={{position: 'absolute', bottom: 40, left: 20, right: 30}}>
+      <View style={{position: 'absolute', bottom: 10, left: 20, right: 30}}>
         <SeatSelection />
       </View>
     </SafeAreaView>

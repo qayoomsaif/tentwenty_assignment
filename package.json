@@ -13,9 +13,7 @@
     "@react-native-async-storage/async-storage": "^2.1.2",
     "@react-native-community/blur": "^4.4.1",
     "@react-native-community/masked-view": "^0.1.11",
-    "@react-navigation/bottom-tab": "file:react-navigation/drawe@react-navigation/nativ@react-navigation/native-stac@react-navigation/stac@reduxjs/toolkiaxiolodaslottie-react-nativreacreact-nativreact-native-barcode-masreact-native-confireact-native-device-infreact-native-fast-imagreact-native-freact-native-gesture-handlereact-native-linear-gradienreact-native-permissionreact-native-reanimatereact-native-responsive-screereact-native-safe-area-contexreact-native-screenreact-native-svreact-native-svg-chartreact-native-vector-iconreact-native-videreact-native-vision-sdreact-querreact-redux",
     "@react-navigation/bottom-tabs": "^7.2.1",
-
     "@react-navigation/native": "^7.0.15",
     "@react-navigation/native-stack": "^7.2.1",
     "@react-navigation/stack": "^7.1.2",

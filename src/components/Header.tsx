@@ -26,22 +26,31 @@ const Header: React.FC<HeaderProps> = ({
 
   return (
     <View style={[styles.container, isTablet && styles.tabletContainer]}>
+      {/* Left Icon */}
       {leftIcon ? (
-        <TouchableOpacity style={styles.initialsButton} onPress={onPressLeft}>
+        <TouchableOpacity
+          style={[styles.iconButton, {alignItems: 'flex-start'}]}
+          onPress={onPressLeft}>
           <SvgXml width={20} height={20} xml={leftIcon} />
         </TouchableOpacity>
-      ) : null}
+      ) : (
+        <View style={styles.iconPlaceholder} />
+      )}
 
+      {/* Centered Title & Subtitle */}
       <View style={styles.textContainer}>
         {heading ? <Text style={styles.title}>{heading}</Text> : null}
         {subHeading ? <Text style={styles.subTitle}>{subHeading}</Text> : null}
       </View>
 
+      {/* Right Icon */}
       {rightIcon ? (
-        <TouchableOpacity style={styles.addButton} onPress={onPressRight}>
-          <SvgXml width={'24'} height={'24'} xml={rightIcon} />
+        <TouchableOpacity style={styles.iconButton} onPress={onPressRight}>
+          <SvgXml width={24} height={24} xml={rightIcon} />
         </TouchableOpacity>
-      ) : null}
+      ) : (
+        <View style={styles.iconPlaceholder} />
+      )}
     </View>
   );
 };
@@ -52,16 +61,18 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     backgroundColor: Colors.background,
-    paddingHorizontal: Platform.OS === 'ios' ? 20 : 20, // Adjust padding for iOS and Android
-    paddingBottom: Platform.OS === 'ios' ? 20 : 15, // Adjust bottom padding for iOS and Android
-    // shadowColor: Colors.shadowDark, // iOS shadow color
-    // shadowOffset: {width: 0, height: 2}, // iOS shadow offset
-    // shadowOpacity: 0.2, // iOS shadow opacity
-    // shadowRadius: 5, // iOS shadow radius
-    // elevation: Platform.OS === 'android' ? 4 : 0, // Android shadow (elevation)
+    paddingHorizontal: 20,
+    paddingBottom: Platform.OS === 'ios' ? 20 : 15,
+    height: 60,
   },
   tabletContainer: {
     paddingHorizontal: 32,
+  },
+  textContainer: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    alignItems: 'center',
   },
   title: {
     fontSize: 14,
@@ -73,24 +84,13 @@ const styles = StyleSheet.create({
     fontWeight: '400',
     color: Colors.textBlueQuaternary,
   },
-  textContainer: {
-    flex: 1,
+  iconButton: {
     justifyContent: 'center',
     alignItems: 'center',
-  },
-  addButton: {
-    backgroundColor: Colors.primary,
-    borderRadius: 12,
-    height: 48,
     width: 48,
-    justifyContent: 'center',
-    alignItems: 'center',
+    height: 48,
   },
-  initialsButton: {
-    // backgroundColor: Colors.white,
-    borderRadius: 12,
-    justifyContent: 'center',
-    // alignItems: 'center',
+  iconPlaceholder: {
     width: 48,
     height: 48,
   },
